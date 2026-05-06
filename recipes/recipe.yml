@@ -31,8 +31,7 @@ modules:
       # Filesystems and Archives
       - ntfs-3g
       - p7zip-plugins
-      # Multimedia and Essential Fonts
-      - ffmpeg-free
+      # Essential Fonts
       - liberation-fonts
 
   - type: default-flatpaks
