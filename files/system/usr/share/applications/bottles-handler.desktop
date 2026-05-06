@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Run in Bottles
+Exec=flatpak run com.usebottles.bottles -f %f
+MimeType=application/x-ms-dos-executable;application/x-msi;
+NoDisplay=true

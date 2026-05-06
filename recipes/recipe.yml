@@ -3,11 +3,11 @@
 # image will be published to ghcr.io/<user>/<name>
 name: oasis
 # description will be included in the image's metadata
-description: This is my personal OS image.
+description: A simple, fast, and reliable alternative to Windows. It works with your hardware and runs your favorite apps right out of the box.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 42 # latest is also supported if you want new updates ASAP
+base-image: ghcr.io/ublue-os/aurora-nvidia
+image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -17,29 +17,50 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
-  - type: dnf
-    repos:
-      copr:
-        - atim/starship
+  - type: rpm-ostree
     install:
-      packages:
-        - micro
-        - starship
+      # Windows Compatibility Layer
+      - wine-core
+      - winetricks
+      - protontricks
+      # Printing and Hardware Support
+      - cups
+      - hplip
+      - system-config-printer
+      - sane-backends
+      # Filesystems and Archives
+      - ntfs-3g
+      - fuse-exfat
+      - p7zip-plugins
+      # Codecs and Fonts
+      - ffmpeg-free
+      - libavcodec-freeworld
+      - google-inter-fonts
+      - liberation-fonts
+      - corefonts
     remove:
-      packages:
-        # example: removing firefox (in favor of the flatpak)
-        # "firefox" is the main package, "firefox-langpacks" is a dependency
-        - firefox
-        - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+      # Removing pre-installed firefox in favor of the flatpak
+      - firefox
+      - firefox-langpacks
 
   - type: default-flatpaks
-    configurations:
-      - notify: true # Send notification after install/uninstall is finished (true/false)
-        scope: system
-        # If no repo information is specified, Flathub will be used by default
-        install: # system flatpaks we want all users to have and not remove
-          - org.mozilla.firefox
-          - org.gnome.Loupe
-      - scope: user # Also add Flathub user repo, but no user packages
+    notify: true # Send notification after install/uninstall is finished
+    system:
+      # Browsers
+      - com.google.Chrome
+      - org.mozilla.firefox
+      # Office and Media
+      - org.libreoffice.LibreOffice
+      - org.videolan.VLC
+      - com.usebottles.bottles
+      # Utilities
+      - org.kde.kcalc
+      - com.github.tchx84.Flatseal
+
+  - type: script
+    snippets:
+      # Link the pre-created desktop file to the mime-type
+      - echo "application/x-ms-dos-executable=bottles-handler.desktop" >> /usr/share/applications/mimeapps.list
+      - update-desktop-database /usr/share/applications
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
