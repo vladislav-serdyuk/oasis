@@ -44,18 +44,20 @@ modules:
       - firefox-langpacks
 
   - type: default-flatpaks
-    notify: true # Send notification after install/uninstall is finished
-    system:
-      # Browsers
-      - com.google.Chrome
-      - org.mozilla.firefox
-      # Office and Media
-      - org.libreoffice.LibreOffice
-      - org.videolan.VLC
-      - com.usebottles.bottles
-      # Utilities
-      - org.kde.kcalc
-      - com.github.tchx84.Flatseal
+    configurations:
+      - notify: true # Send notification after install/uninstall is finished
+        scope: system
+        install:
+          # Browsers
+          - com.google.Chrome
+          - org.mozilla.firefox
+          # Office and Media
+          - org.libreoffice.LibreOffice
+          - org.videolan.VLC
+          - com.usebottles.bottles
+          # Utilities
+          - org.kde.kcalc
+          - com.github.tchx84.Flatseal
 
   - type: script
     snippets:
