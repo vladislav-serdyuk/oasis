@@ -37,7 +37,6 @@ modules:
       - libavcodec-freeworld
       - google-inter-fonts
       - liberation-fonts
-      - corefonts
     remove:
       # Removing pre-installed firefox in favor of the flatpak
       - firefox
