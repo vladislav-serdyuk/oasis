@@ -6,8 +6,8 @@ name: oasis
 description: A simple, fast, and reliable alternative to Windows. It works with your hardware and runs your favorite apps right out of the box.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/aurora-nvidia
-image-version: 42 # latest is also supported if you want new updates ASAP
+base-image: ghcr.io/ublue-os/aurora-nvidia-open
+image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
