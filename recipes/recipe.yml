@@ -30,14 +30,10 @@ modules:
       - sane-backends
       # Filesystems and Archives
       - ntfs-3g
-      - fuse-exfat
       - p7zip-plugins
-      # Codecs and Fonts
+      # Multimedia and Essential Fonts
       - ffmpeg-free
-      - libavcodec-freeworld
-      - google-inter-fonts
       - liberation-fonts
-      - corefonts
 
   - type: default-flatpaks
     configurations:
