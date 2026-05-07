@@ -2,6 +2,17 @@
 
 A simple, fast, and reliable alternative to Windows. It works with your hardware and runs your favorite apps right out of the box.
 
+## 1. Running Windows Apps (.exe) — The First Steps
+In Oasis, Windows applications run inside protected containers called "Bottles." Since Oasis doesn't have a pre-configured Windows environment to keep the system clean, your first launch requires a few extra steps:
+
+* Step 1: Initial Setup — Double-click your first .exe file. The Bottles app will open and ask for an initial setup. Click "Continue" through the welcome screens until you reach the main dashboard.
+* Step 2: Create a Foundation — You cannot run an app "into thin air." Go to the Bottles tab and click the "Create a new Bottle" button.
+* Step 3: Configuration — Give it a name (e.g., MyApps) and select the "Application" environment. Wait for the process to finish (the system is creating a virtual C: drive for you).
+* Step 4: Launching — Now, go back to your .exe file in the file manager and double-click it again. A window will appear asking which bottle to use. Select the one you just created.
+* Step 5: Install — The familiar Windows installer will now start!
+
+Tip: You only need to do steps 1-3 once. For all future apps, just double-click them and select your existing bottle.
+
 ## Installation
 
 > [!WARNING]  
