@@ -33,6 +33,8 @@ modules:
       - p7zip-plugins
       # Essential Fonts
       - liberation-fonts
+      # Applications
+      - gwenview
 
   - type: default-flatpaks
     configurations:
@@ -49,11 +51,5 @@ modules:
           # Utilities
           - org.kde.kcalc
           - com.github.tchx84.Flatseal
-
-  - type: script
-    snippets:
-      # Link the pre-created desktop file to the mime-type
-      - echo "application/x-ms-dos-executable=bottles-handler.desktop" >> /usr/share/applications/mimeapps.list
-      - update-desktop-database /usr/share/applications
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
