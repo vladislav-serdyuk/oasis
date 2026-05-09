@@ -17,39 +17,37 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
-  - type: rpm-ostree
+    - type: rpm-ostree
     install:
-      # Windows Compatibility Layer
-      - wine-core
-      - winetricks
-      - protontricks
-      # Printing and Hardware Support
+      # Printing and Hardware
       - cups
       - hplip
       - system-config-printer
       - sane-backends
-      # Filesystems and Archives
+      # Filesystems
       - ntfs-3g
-      - p7zip-plugins
-      # Essential Fonts
-      - liberation-fonts
-      # Applications
-      - gwenview
+      - exfatprogs
+      # Codecs
+      - libavcodec-freeworld
+      - ffmpeg
+      # Fonts
+      - google-inter-fonts
+      - google-arimo-fonts
+      - google-tinos-fonts
+      - google-cousine-fonts
 
   - type: default-flatpaks
     configurations:
-      - notify: true # Send notification after install/uninstall is finished
+      - notify: true
         scope: system
         install:
-          # Browsers
           - com.google.Chrome
           - org.mozilla.firefox
-          # Office and Media
           - org.libreoffice.LibreOffice
           - org.videolan.VLC
           - com.usebottles.bottles
-          # Utilities
           - org.kde.kcalc
           - com.github.tchx84.Flatseal
+          - io.github.realmazharmasood.boxbuddy 
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
