@@ -30,10 +30,10 @@ modules:
       # Codecs
       - ffmpeg
       # Fonts
-      - inter-fonts
       - google-arimo-fonts
       - google-tinos-fonts
       - google-cousine-fonts
+      - liberation-fonts
 
   - type: default-flatpaks
     configurations:
