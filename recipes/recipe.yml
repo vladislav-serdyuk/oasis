@@ -19,11 +19,6 @@ modules:
 
   - type: rpm-ostree
     install:
-      - rpmfusion-free-release
-      - rpmfusion-nonfree-release
-
-  - type: rpm-ostree
-    install:
       # Printing and Hardware
       - cups
       - hplip
@@ -33,7 +28,6 @@ modules:
       - ntfs-3g
       - exfatprogs
       # Codecs
-      - libavcodec-freeworld
       - ffmpeg
       # Fonts
       - inter-fonts
