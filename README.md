@@ -13,6 +13,8 @@ In Oasis, Windows applications run inside protected containers called "Bottles."
 
 Tip: You only need to do steps 1-3 once. For all future apps, just double-click them and select your existing bottle.
 
+
+
 ## Installation
 
 > [!WARNING]  
