@@ -47,6 +47,6 @@ modules:
           - com.usebottles.bottles
           - org.kde.kcalc
           - com.github.tchx84.Flatseal
-          - io.github.realmazharmasood.boxbuddy 
+          - it.miotto.boxbuddy 
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
