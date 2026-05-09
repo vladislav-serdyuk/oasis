@@ -2,6 +2,8 @@
 
 A simple, fast, and reliable alternative to Windows. It works with your hardware and runs your favorite apps right out of the box.
 
+<img width="1516" height="947" alt="image" src="https://github.com/user-attachments/assets/f16dc100-cd78-40fa-b383-1335bcb6f949" />
+
 ## 1. Running Windows Apps (.exe) — The First Steps
 In Oasis, Windows applications run inside protected containers called "Bottles." Since Oasis doesn't have a pre-configured Windows environment to keep the system clean, your first launch requires a few extra steps:
 
@@ -49,8 +51,7 @@ To rebase an existing atomic Fedora installation to the latest build:
 The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
 
 ## ISO
-
-If build on Fedora Atomic, you can generate an offline ISO with the instructions available [here](https://blue-build.org/how-to/generate-iso/#_top). These ISOs cannot unfortunately be distributed on GitHub for free due to large sizes, so for public projects something else has to be used for hosting.
+[Download](https://drive.google.com/drive/folders/1ePK6MGZuuArni343QLJ4MtxyKrbQCp5H?usp=sharing)
 
 ## Verification
 
