@@ -13,7 +13,14 @@ In Oasis, Windows applications run inside protected containers called "Bottles."
 
 Tip: You only need to do steps 1-3 once. For all future apps, just double-click them and select your existing bottle.
 
+## 2. Installing Apps — Using Bazaar
+Oasis comes with **Bazaar**, a modern app store that makes installing software as easy as on a smartphone. No need to search for installers on websites!
 
+* **Find Anything:** Open Bazaar from your app menu and search for popular apps like Telegram, Discord, Steam, or Spotify.
+* **One-Click Install:** Just click "Install," and the app will be ready to use.
+* **Stay Updated:** Bazaar automatically checks for updates for all your installed apps and notifies you when they are ready.
+
+*Note: For the best experience, Oasis uses the **Flatpak** format, which keeps your system fast and secure.*
 
 ## Installation
 
