@@ -41,10 +41,6 @@ jobs:
           # enabled by default, disable if your image is small and you want faster builds
           maximize_build_space: true
 
-      - name: Prepare repo name
-        run: |
-          echo "IMAGE_REPO=ghcr.io/${{ github.repository }}" | tr '[:upper:]' '[:lower:]' >> $GITHUB_ENV
-
       - name: Build ISO
         uses: jasonn3/build-container-installer@v1.2.4
         id: build
