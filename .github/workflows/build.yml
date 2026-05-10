@@ -40,3 +40,32 @@ jobs:
 
           # enabled by default, disable if your image is small and you want faster builds
           maximize_build_space: true
+
+      - name: Prepare repo name
+        run: |
+          echo "IMAGE_REPO=ghcr.io/${{ github.repository }}" | tr '[:upper:]' '[:lower:]' >> $GITHUB_ENV
+
+      - name: Build ISO
+        uses: jasonn3/build-container-installer@v1.2.4
+        id: build
+        with:
+          arch: x86_64
+          image_name: Oasis
+          image_repo: ${{ env.IMAGE_REPO}}
+          image_tag: latest
+          variant: Kinoite
+          iso_name: Oasis.iso
+
+      - name: Install rclone
+        run: sudo apt-get update && sudo apt-get install -y rclone
+
+      - name: Upload ISO to Google Drive
+        env:
+          RCLONE_CONFIG_GDRIVE_TYPE: drive
+          RCLONE_CONFIG_GDRIVE_SCOPE: drive
+          RCLONE_CONFIG_GDRIVE_TOKEN: ${{ secrets.GDRIVE_TOKEN }}
+        run: |
+          ISO_FILE=${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }}
+          echo "Uploading $ISO_FILE..."
+          rclone copy "$ISO_FILE" gdrive:/Oasis/ -P
+          rclone copy "$ISO_FILE-CHECKSUM" gdrive:/Oasis/ -P
