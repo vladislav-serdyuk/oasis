@@ -46,7 +46,7 @@ jobs:
         id: build
         with:
           arch: x86_64
-          image_name: Oasis
+          image_name: oasis
           image_repo: ${{ env.IMAGE_REPO}}
           image_tag: latest
           variant: Kinoite
