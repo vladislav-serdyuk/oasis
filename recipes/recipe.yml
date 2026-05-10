@@ -48,4 +48,19 @@ modules:
           - org.kde.kcalc
           - com.github.tchx84.Flatseal
 
+  - type: script
+    snippets:
+      # Fixes KDE Plasma Setup bug: ensures US layout fallback and Alt+Shift toggle
+      # for non-latin layouts, preventing lock-out during user creation.
+      - |
+        echo "Applying layout fix to KDE Plasma Setup..."
+        FILE="/usr/share/plasma/packages/org.kde.plasmasetup.keyboard/contents/ui/main.qml"
+        if [ -f "$FILE" ]; then
+          sed -i 's/KeyboardUtil.layoutName = shortName;/KeyboardUtil.layoutName = (shortName === "us" ? "us" : "us," + shortName); KeyboardUtil.layoutOptions = ["grp:alt_shift_toggle"];/g' "$FILE"
+          sed -i 's/KeyboardUtil.layoutVariant = variantName;/KeyboardUtil.layoutVariant = (shortName === "us" ? variantName : "," + variantName);/g' "$FILE"
+          echo "KDE Plasma Setup patched successfully."
+        else
+          echo "Warning: Target file not found, skipping patch."
+        fi
+
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
