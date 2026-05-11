@@ -46,6 +46,8 @@ modules:
           - org.videolan.VLC
           - com.usebottles.bottles
           - org.kde.kcalc
+          - org.kde.gwenview
+          - org.kde.kolourpaint
           - com.github.tchx84.Flatseal
 
   - type: script
