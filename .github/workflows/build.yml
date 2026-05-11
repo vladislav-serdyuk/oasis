@@ -49,7 +49,7 @@ jobs:
           image_name: oasis
           image_repo: ghcr.io/${{ github.repository_owner }}
           image_tag: latest
-          version: 44
+          version: 43
           variant: Kinoite
           iso_name: Oasis.iso
 
