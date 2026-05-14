@@ -23,7 +23,7 @@ In Oasis, Windows applications run inside protected containers called **Bottles*
   1. Open **Bottles** app.
   2. Go to the **"Bottles"** tab and select your bottle.
   3. Scroll down to the **"Programs"** section.
-  4. Click the **three dots ⋮** next to your app and select **"Add to Desktop"**.
+  4. Click the **three dots ⋮** next to your app and select **"Add Desktop Entry"**.
   5. A system confirmation window will appear — simply **press Enter**.
   6. Now your app is available in the **Start Menu**!
 
