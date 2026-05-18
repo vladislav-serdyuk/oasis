@@ -13,6 +13,8 @@ BOTTLES_USER_DIR="$HOME/.var/app/com.usebottles.bottles/data/bottles"
 # nested 'bottles' subdirectory within its shared data directory.
 BOTTLE_PATH="$BOTTLES_USER_DIR/bottles/$BOTTLE_NAME"
 
+AUTOSTART_FILE="$HOME/.config/autostart/oasis-bottles-init.desktop"
+
 # Timeout settings for waiting until the Bottles Flatpak package is installed
 MAX_WAIT=3600
 WAIT_INTERVAL=5
@@ -24,7 +26,7 @@ ELAPSED=0
 echo "Checking Bottles Flatpak availability..."
 
 # Loop continuously until the Bottles package ID is detected in the system
-while ! flatpak list --ids | grep -q "com.usebottles.bottles"; do
+while ! flatpak info com.usebottles.bottles &>/dev/null; do
     if [ "$ELAPSED" -ge "$MAX_WAIT" ]; then
         echo "Error: Bottles installation timeout exceeded ($MAX_WAIT sec)." >&2
         exit 1
