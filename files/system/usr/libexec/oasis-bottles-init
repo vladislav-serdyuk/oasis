@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# ==============================================================================
+# Configuration
+# ==============================================================================
+# Name of the Wine prefix (bottle) to be created
+BOTTLE_NAME="Windows_App"
+
+# Base data directory for the Bottles Flatpak sandbox
+BOTTLES_USER_DIR="$HOME/.var/app/com.usebottles.bottles/data/bottles"
+
+# Complete path to the bottle. Bottles stores the actual prefixes inside a 
+# nested 'bottles' subdirectory within its shared data directory.
+BOTTLE_PATH="$BOTTLES_USER_DIR/bottles/$BOTTLE_NAME"
+
+# Timeout settings for waiting until the Bottles Flatpak package is installed
+MAX_WAIT=3600
+WAIT_INTERVAL=5
+ELAPSED=0
+
+# ==============================================================================
+# Phase 1: Wait for Bottles installation
+# ==============================================================================
+echo "Checking Bottles Flatpak availability..."
+
+# Loop continuously until the Bottles package ID is detected in the system
+while ! flatpak list --ids | grep -q "com.usebottles.bottles"; do
+    if [ "$ELAPSED" -ge "$MAX_WAIT" ]; then
+        echo "Error: Bottles installation timeout exceeded ($MAX_WAIT sec)." >&2
+        exit 1
+    fi
+    sleep $WAIT_INTERVAL
+    ELAPSED=$((ELAPSED + WAIT_INTERVAL))
+done
+
+echo "Bottles detected. Proceeding with configuration..."
+sleep 3
+
+# ==============================================================================
+# Phase 2: Bottle initialization
+# ==============================================================================
+# Check if the specific bottle directory already exists to prevent duplication
+if [ ! -d "$BOTTLE_PATH" ]; then
+    echo "Creating new bottle: $BOTTLE_NAME..."
+    
+    # Note on syntax: The '--' separator is mandatory here. It instructs the 
+    # Flatpak parser to stop processing flags, ensuring that '--bottle-name' 
+    # and '--environment' are passed directly to 'bottles-cli' without errors.
+    flatpak run --command=bottles-cli com.usebottles.bottles -- new --bottle-name "$BOTTLE_NAME" --environment application
+
+    echo "Bottle configuration completed successfully."
+else
+    echo "Notice: Bottle '$BOTTLE_NAME' already exists. Skipping initialization."
+fi
+
+# ==============================================================================
+# Phase 3: Self-cleanup from user autostart
+# ==============================================================================
+# If the bottle exists (either just created or previously established), 
+# remove the autostart entry for this user to prevent future checks on boot.
+if [ -f "$AUTOSTART_FILE" ]; then
+    echo "Cleaning up autostart entry for the current user..."
+    rm -f "$AUTOSTART_FILE"
+fi
