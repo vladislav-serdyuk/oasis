@@ -76,10 +76,6 @@ Oasis configures everything automatically on the first boot. Just follow these s
   4. Press **Enter** on the system confirmation popup.
   5. Your app is now ready in the **Start Menu**!
 
-
-> [!TIP]
-> You only need to do steps 1-3 **once**. For all future apps, just double-click them and select your existing bottle. It will work almost instantly!
-
 ### Installing Apps — Using Bazaar
 Oasis comes with **Bazaar**, a modern app store that makes installing software as easy as on a smartphone. No need to search for installers on websites!
 
