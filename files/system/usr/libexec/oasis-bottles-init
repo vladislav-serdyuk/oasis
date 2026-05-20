@@ -37,7 +37,7 @@ sleep 3
 # Phase 1.5: Interactive GUI First Launch
 # ==============================================================================
 # Send a critical, persistent system notification to guide the user
-notify-send -i com.usebottles.bottles -u critical "Oasis Setup" "Bottles is opening. Click the right arrow button twice, then click 'Continue'. After that, just close the Bottles window."
+notify-send -i com.usebottles.bottles -u critical "Oasis Setup" "Click 'Not Now', click the right arrow twice, and press 'Continue'. Then wait for the automatic setup to finish and close the main dashboard."
 
 # Launch Bottles GUI on the foreground and WAIT until the user manually closes it
 flatpak run com.usebottles.bottles
