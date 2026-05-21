@@ -63,6 +63,30 @@ The `latest` tag will automatically point to the latest build. That build will s
   LibreOffice, etc.) will begin installing automatically in the background 
   once the initial setup is complete.
 
+### UEFI Secure Boot Support
+
+Oasis is compatible with Secure Boot. However, to use proprietary drivers (like NVIDIA) or virtualization tools (like VirtualBox), it is recommended to add the system's digital signature to your motherboard's trusted list.
+
+*Note: If your motherboard completely blocks the installation media with a **"Secure Boot Violation"** error, you must temporarily disable Secure Boot in your BIOS settings to boot into Oasis and complete the steps below.*
+
+1. Open your terminal in Oasis and run the automatic key enrollment tool:
+   ```bash
+   ujust enroll-secure-boot-key
+   ```
+2. Read the instructions on the screen carefully. The script will prepare the certificate and tell you the temporary password (usually `universalblue`).
+3. Reboot your laptop:
+   ```bash
+   systemctl reboot
+   ```
+4. Upon reboot, a blue textual screen called **MOK Manager** will appear. Don't panic! Follow these quick steps:
+  * Select **Enroll MOK** and press Enter.
+  * Select **Continue** -> **Yes**.
+  * Enter the password: `universalblue` and press **Enter** (Note: characters **will not** be displayed as you type, this is blind input for security).
+  * Select **Reboot**.
+
+Once the system starts, your hardware keys are fully synchronized, and all secure modules will load flawlessly!
+
+
 ### Running Windows Apps (.exe) — The First Steps
 
 Oasis configures everything automatically on the first boot. Just follow these simple steps to initialize the environment:
