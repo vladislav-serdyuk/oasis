@@ -8,14 +8,14 @@ A simple, fast, and reliable alternative to Windows. It works with your hardware
 
 ### Minimum
 * **Processor:** 64-bit dual-core Intel or AMD CPU
-* **RAM:** 4 GB
-* **Storage:** 30 GB of free space
+* **RAM:** 4 GB *(Will run on 2 GB configurations automatically thanks to built-in zRAM optimizations)*
+* **Storage:** 30 GB of free space *(Oasis occupies only ~21 GB after full setup, including pre-installed apps and Bottles runtimes)*
 * **Graphics:** Any GPU with OpenGL 3.2+ support
 * **Network:** Standard internet connection
 
 ### Recommended
 * **Processor:** Quad-core Intel Core i3 / AMD Ryzen 3 or better
-* **RAM:** 8 GB
+* **RAM:** 8 GB *(Forget about memory limits, open 40+ browser tabs with ease)*
 * **Storage:** 60 GB+ SSD (Solid State Drive)
 * **Graphics:** Any GPU with OpenGL 3.2+ support
 * **Network:** High-speed internet connection
@@ -62,6 +62,7 @@ The `latest` tag will automatically point to the latest build. That build will s
 * **Background Installation:** Core applications (such as Firefox, Google Chrome, 
   LibreOffice, etc.) will begin installing automatically in the background 
   once the initial setup is complete.
+* **Seamless Background Updates:** No more "Do not turn off your computer" screens. Oasis downloads and prepares updates silently in the background while you work. You can reboot whenever you want — the restart takes only a few seconds, and you can always rollback to the previous working version instantly from the boot menu if anything goes wrong.
 
 ### UEFI Secure Boot Support
 
@@ -120,6 +121,7 @@ Oasis comes with **Bazaar**, a modern app store that makes installing software a
 │   ├── polkit-1/rules.d/        # Polkit authorization rules (e.g., udisks2)
 │   ├── skel/                    # Default user skeleton directory configuration
 │   └── systemd/                 # Systemd configuration (zram-generator)
+├── files/system/usr/libexec/    # System-level utility scripts (Oasis setup core)
 ├── modules/                     # Custom build modules
 ├── recipes/
 │   └── recipe.yml               # Main image recipe defining packages and flatpaks
