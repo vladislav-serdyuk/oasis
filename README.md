@@ -66,27 +66,27 @@ The `latest` tag will automatically point to the latest build. That build will s
 
 ### UEFI Secure Boot Support
 
-Oasis is compatible with Secure Boot. However, to use proprietary drivers (like NVIDIA) or virtualization tools (like VirtualBox), it is recommended to add the system's digital signature to your motherboard's trusted list.
+Secure Boot is supported by default on Oasis, providing an additional layer of security. However, to fully load third-party modules like proprietary NVIDIA drivers or VirtualBox components, our custom key must be enrolled into your system.
 
-*Note: If your motherboard completely blocks the installation media with a **"Secure Boot Violation"** error, you must temporarily disable Secure Boot in your BIOS settings to boot into Oasis and complete the steps below.*
+#### Automatic Enrollment (First Boot)
+Immediately after the initial installation and first boot, the system will stage the key automatically.
 
-1. Open your terminal in Oasis and run the automatic key enrollment tool:
+1. Simply reboot your computer.
+2. When the blue **MOK Manager** text screen appears, select **Enroll MOK** -> **Continue** -> **Yes**.
+3. When prompted for the password, enter: `universalblue` (the characters won't be displayed) and select **Reboot**.
+
+#### Manual Enrollment (Fallback)
+If this step was not completed during the initial setup or you skipped it, you can manually enroll the key at any time:
+
+1. Open your terminal in Oasis and run the following command:
    ```bash
    ujust enroll-secure-boot-key
    ```
-2. Read the instructions on the screen carefully. The script will prepare the certificate and tell you the temporary password (usually `universalblue`).
-3. Reboot your laptop:
+2. Follow the on-screen instructions, then reboot your system:
    ```bash
    systemctl reboot
    ```
-4. Upon reboot, a blue textual screen called **MOK Manager** will appear. Don't panic! Follow these quick steps:
-  * Select **Enroll MOK** and press Enter.
-  * Select **Continue** -> **Yes**.
-  * Enter the password: `universalblue` and press **Enter** (Note: characters **will not** be displayed as you type, this is blind input for security).
-  * Select **Reboot**.
-
-Once the system starts, your hardware keys are fully synchronized, and all secure modules will load flawlessly!
-
+3. Upon reboot, the blue **MOK Manager** screen will appear. Select **Enroll MOK** -> **Continue** -> **Yes**, enter the password `universalblue` (input will be invisible), and select **Reboot**.
 
 ### Running Windows Apps (.exe) — The First Steps
 
