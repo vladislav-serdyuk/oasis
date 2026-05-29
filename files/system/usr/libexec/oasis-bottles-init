@@ -15,6 +15,22 @@ MAX_WAIT=3600
 WAIT_INTERVAL=5
 ELAPSED=0
 
+# Determine language for localization (ONLY for notifications)
+LOCALE=$(echo "$LANG" | cut -d. -f1)  # e.g., en_US, ru_RU
+if [[ "$LOCALE" == ru_* ]]; then
+    # Russian translations for notifications only
+    NOTIFY_SETUP_TITLE="Настройка Oasis"
+    NOTIFY_SETUP_BODY="Нажмите 'Not Now', дважды нажмите правую стрелку, затем нажмите 'Продолжить'. Затем дождитесь завершения автоматической настройки и закройте главное окно"
+    NOTIFY_READY_TITLE="Oasis готов!"
+    NOTIFY_READY_BODY="Среда по умолчанию '$BOTTLE_NAME' успешно настроена. Теперь вы можете запускать .exe файлы."
+else
+    # English (default) for notifications
+    NOTIFY_SETUP_TITLE="Oasis Setup"
+    NOTIFY_SETUP_BODY="Click 'Not Now', click the right arrow twice, and press 'Continue'. Then wait for the automatic setup to finish and close the main dashboard."
+    NOTIFY_READY_TITLE="Oasis Ready!"
+    NOTIFY_READY_BODY="The default '$BOTTLE_NAME' environment has been successfully configured. You can now run .exe files."
+fi
+
 # ==============================================================================
 # Phase 1: Wait for Bottles installation
 # ==============================================================================
@@ -37,7 +53,7 @@ sleep 3
 # Phase 1.5: Interactive GUI First Launch
 # ==============================================================================
 # Send a critical, persistent system notification to guide the user
-notify-send -i com.usebottles.bottles -u critical "Oasis Setup" "Click 'Not Now', click the right arrow twice, and press 'Continue'. Then wait for the automatic setup to finish and close the main dashboard."
+notify-send -i com.usebottles.bottles -u critical "$NOTIFY_SETUP_TITLE" "$NOTIFY_SETUP_BODY"
 
 # Launch Bottles GUI on the foreground and WAIT until the user manually closes it
 flatpak run com.usebottles.bottles
@@ -54,7 +70,7 @@ echo "Creating new bottle: $BOTTLE_NAME..."
 flatpak run --command=bottles-cli com.usebottles.bottles -- new --bottle-name "$BOTTLE_NAME" --environment application
 
 # Send ultimate success notification with standard priority
-notify-send -i com.usebottles.bottles "Oasis Ready!" "The default '$BOTTLE_NAME' environment has been successfully configured. You can now run .exe files."
+notify-send -i com.usebottles.bottles "$NOTIFY_READY_TITLE" "$NOTIFY_READY_BODY"
 
 echo "Bottle '$BOTTLE_NAME' successfully configured. Cleaning up autostart..."
 
