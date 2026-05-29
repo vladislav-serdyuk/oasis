@@ -49,7 +49,7 @@ modules:
           - org.kde.gwenview
           - org.kde.kolourpaint
           - com.github.tchx84.Flatseal
-
+          - it.mijorus.gearlever
   - type: script
     snippets:
       # Fixes KDE Plasma Setup bug: ensures US layout fallback and Alt+Shift toggle
