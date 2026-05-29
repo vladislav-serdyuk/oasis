@@ -110,6 +110,9 @@ Oasis comes with **Bazaar**, a modern app store that makes installing software a
 
 *Note: For the best experience, Oasis uses the **Flatpak** format, which keeps your system fast and secure.*
 
+### Install AppImage Apps with Gearlever
+To install and run AppImage applications, right-click the AppImage file, select "Open with Gearlever".
+
 ## Developer & Advanced Information
 
 ### Repository Structure
