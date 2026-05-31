@@ -113,6 +113,8 @@ Oasis comes with **Bazaar**, a modern app store that makes installing software a
 ### Install AppImage Apps with Gearlever
 To install and run AppImage applications, right-click the AppImage file, select "Open with Gearlever".
 
+Use Gearlever to manage AppImage applications.
+
 ## Developer & Advanced Information
 
 ### Repository Structure
