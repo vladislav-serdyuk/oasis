@@ -4,8 +4,6 @@ set -euxo pipefail
 # ==============================================================================
 # Configuration
 # ==============================================================================
-# Name of the WINE prefix (bottle) to be created
-BOTTLE_NAME="Windows_App"
 
 # Full path to the autostart entry for runtime cleanup
 AUTOSTART_FILE="$HOME/.config/autostart/oasis-bottles-init.desktop"
@@ -15,21 +13,6 @@ MAX_WAIT=3600
 WAIT_INTERVAL=5
 ELAPSED=0
 
-# Determine language for localization (ONLY for notifications)
-LOCALE=$(echo "$LANG" | cut -d. -f1)  # e.g., en_US, ru_RU
-if [[ "$LOCALE" == ru_* ]]; then
-    # Russian translations for notifications only
-    NOTIFY_READY_TITLE="Oasis готов!"
-    NOTIFY_READY_BODY="Среда по умолчанию '$BOTTLE_NAME' успешно настроена. Теперь вы можете запускать .exe файлы."
-else
-    # English (default) for notifications
-    NOTIFY_READY_TITLE="Oasis Ready!"
-    NOTIFY_READY_BODY="The default '$BOTTLE_NAME' environment has been successfully configured. You can now run .exe files."
-fi
-
-# ==============================================================================
-# Phase 1: Wait for Bottles installation
-# ==============================================================================
 echo "Checking Bottles Flatpak availability..."
 
 # Loop continuously until the Bottles Flatpak package is detected in the system
@@ -57,18 +40,6 @@ if [ "$COUNTRY_CODE" = "RU" ]; then
 
     echo "Switched"
 fi
-
-# ==============================================================================
-# Phase 2: Bottle initialization & Phase 3: Smart Cleanup
-# ==============================================================================
-echo "Creating new bottle: $BOTTLE_NAME..."
-
-# Execute the creation command via bottles-cli (now guaranteed to succeed)
-flatpak run --command=bottles-cli com.usebottles.bottles -- new --bottle-name "$BOTTLE_NAME" --environment application
-
-notify-send -i com.usebottles.bottles "$NOTIFY_READY_TITLE" "$NOTIFY_READY_BODY"
-
-echo "Bottle '$BOTTLE_NAME' successfully configured. Cleaning up autostart..."
 
 # Clean up the autostart desktop entry so it never runs again
 rm -f "$AUTOSTART_FILE"
