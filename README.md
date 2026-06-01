@@ -90,12 +90,13 @@ If this step was not completed during the initial setup or you skipped it, you c
 
 ### Running Windows Apps (.exe) — The First Steps
 
-Oasis configures everything automatically on the first boot.
+Oasis configures the network automatically on the first boot. If the system detects that the country code is Russia (RU), it will seamlessly route all Bottles traffic to a fast, local Yandex mirror to bypass any upstream network restrictions.
 
-Just follow these simple steps to initialize the environment:
+Just follow these simple steps to initialize the environment (**Steps 1 and 2 are required only once**):
 
-* **Step 1: System Initialization** — On the first boot, Oasis will silently configure the mirrors and create your default `Windows_App` environment in the background. Simply wait for the system notification confirming that the setup is complete and the autostart script has cleaned itself up.
-* **Step 2: Launching & Adding to Start Menu** — Go to any `.exe` file, double-click it, select the pre-configured **`Windows_App`**, and click **'Choose'**. To make the app appear in your Oasis Start Menu:
+* **Step 1: First-Time Setup** — Open the **Bottles** app. Click **'Not Now'** on the first screen, click the right arrow **`>`** twice, and press **'Continue'**.
+* **Step 2: Create Environment** — Click the **'+'** or **'Create a new Bottle'** button, name it **`Windows_App`**, select the **'Application'** environment, and click **'Create'**.
+* **Step 3: Launching & Adding to Start Menu** — Go to any `.exe` file, double-click it, select the pre-configured **`Windows_App`**, and click **'Choose'**. To make the app appear in your Oasis Start Menu:
   1. Open the **Bottles** app.
   2. Select **`Windows_App`** and scroll down to the **"Programs"** section.
   3. Click the **three dots ⋮** next to your app and select **"Add Desktop Entry"**.
