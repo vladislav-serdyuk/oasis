@@ -6,7 +6,7 @@ set -euxo pipefail
 # ==============================================================================
 
 # Full path to the autostart entry for runtime cleanup
-AUTOSTART_FILE="$HOME/.config/autostart/oasis-bottles-init.desktop"
+AUTOSTART_FILE="$HOME/.config/autostart/oasium-bottles-init.desktop"
 
 # Timeout configurations for the Flatpak availability check
 MAX_WAIT=3600

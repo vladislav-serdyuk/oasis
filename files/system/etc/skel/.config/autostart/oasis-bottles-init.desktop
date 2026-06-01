@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Oasis Bottles Initializer
-Comment=Automatically configures the default WINE bottle on first boot
-Exec=/usr/libexec/oasis-bottles-init
-Terminal=false
-NoDisplay=true
-X-GNOME-Autostart-enabled=true
-

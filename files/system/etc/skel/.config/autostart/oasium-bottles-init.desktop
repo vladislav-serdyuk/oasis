@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Oasium Bottles Initializer
+Comment=Automatically configures the Bottle app on first boot
+Exec=/usr/libexec/oasium-bottles-init
+Terminal=false
+NoDisplay=true
+X-GNOME-Autostart-enabled=true
+
