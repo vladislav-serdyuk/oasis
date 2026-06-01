@@ -53,16 +53,16 @@ jobs:
           variant: Kinoite
           iso_name: Oasium.iso
 
-      - name: Install rclone
-        run: sudo apt-get update && sudo apt-get install -y rclone
-
-      - name: Upload ISO to Google Drive
+      - name: Upload to SourceForge
         env:
-          RCLONE_CONFIG_GDRIVE_TYPE: drive
-          RCLONE_CONFIG_GDRIVE_SCOPE: drive
-          RCLONE_CONFIG_GDRIVE_TOKEN: ${{ secrets.GDRIVE_TOKEN }}
+          SF_USER: ${{ secrets.SF_USERNAME }}
+          SF_PASS: ${{ secrets.SF_PASSWORD }}
         run: |
-          ISO_FILE=${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }}
-          echo "Uploading $ISO_FILE..."
-          rclone copy "$ISO_FILE" gdrive:/Oasis/ -P
-          rclone copy "$ISO_FILE-CHECKSUM" gdrive:/Oasis/ -P
+          sudo apt-get update && sudo apt-get install -y sshpass
+
+          ISO_FILE="${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }}"
+          SUM_FILE="$ISO_FILE-CHECKSUM"
+
+          sshpass -p "$SF_PASS" rsync -avP -e "ssh -o StrictHostKeyChecking=no" \
+            "$ISO_FILE" "$SUM_FILE" \
+            "$SF_USER@frs.sourceforge.net:/home/frs/project/oasium/"
