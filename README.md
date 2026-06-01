@@ -23,7 +23,7 @@ A simple, fast, and reliable alternative to Windows. It works with your hardware
 ## Installation
 
 ### Method 1: Fresh Install (Recommended for End Users)
-1. Download the latest ISO image: [Download Oasis ISO via Google Drive](https://drive.google.com/drive/folders/1ePK6MGZuuArni343QLJ4MtxyKrbQCp5H?usp=sharing).
+1. Download the latest ISO image: [Download Oasium ISO via SourceForge](https://sourceforge.net/projects/oasium/files/).
 2. Flash it to a USB drive using Rufus, Ventoy, or BalenaEtcher.
 3. Boot from the USB and follow the on-screen installer.
 
