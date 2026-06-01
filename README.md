@@ -90,11 +90,12 @@ If this step was not completed during the initial setup or you skipped it, you c
 
 ### Running Windows Apps (.exe) — The First Steps
 
-Oasis configures everything automatically on the first boot. Just follow these simple steps to initialize the environment:
+Oasis configures everything automatically on the first boot.
 
-* **Step 1: First-Time Setup** — A system notification will appear, and the **Bottles** app will open automatically. Click **'Not Now'** on the first screen, click the right arrow **`>`** twice, and press **'Continue'**.
-* **Step 2: Automatic Initialization** — Wait for the internal setup (13 components) to finish. Once you see the main dashboard, simply **close the Bottles window**. The system will silently create your default `Windows_App` environment in the background and clean up the autostart process.
-* **Step 3: Launching & Adding to Start Menu** — Go to any `.exe` file, double-click it, select the pre-configured **`Windows_App`**, and click **'Choose'**. To make the app appear in your Oasis Start Menu:
+Just follow these simple steps to initialize the environment:
+
+* **Step 1: System Initialization** — On the first boot, Oasis will silently configure the mirrors and create your default `Windows_App` environment in the background. Simply wait for the system notification confirming that the setup is complete and the autostart script has cleaned itself up.
+* **Step 2: Launching & Adding to Start Menu** — Go to any `.exe` file, double-click it, select the pre-configured **`Windows_App`**, and click **'Choose'**. To make the app appear in your Oasis Start Menu:
   1. Open the **Bottles** app.
   2. Select **`Windows_App`** and scroll down to the **"Programs"** section.
   3. Click the **three dots ⋮** next to your app and select **"Add Desktop Entry"**.
